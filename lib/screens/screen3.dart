@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 class Screen3 extends StatelessWidget {
   const Screen3({super.key});
 
-  final games = const [
-    'Minecraft',
-    'Fortnite',
-    'Resident evil',
-    'Halo',
-    'God of war',
-    'Silent hill',
-    'Hollow Knight',
-    'Final Fantasy',
-  ];
+  final Map<String, String> juegos = const {
+    'Hollow knigth': 'assets/imgs/hollow.png',
+    'Halo': 'assets/imgs/Halo.png',
+    'Minecraft': 'assets/imgs/MC.png',
+    'Resident evil': 'assets/imgs/RE.png',
+    'Fornite': 'assets/imgs/Miku.png',
+  };
 
   final marcas = const [
     'Nike',
@@ -31,20 +28,15 @@ class Screen3 extends StatelessWidget {
       appBar: AppBar(title: Text('Ventana 3')),
       body: ListView(
         children: [
-          ...games.map(
-            (game) => ListTile(
-              leading: Icon(Icons.videogame_asset),
-              title: Text(game),
-              subtitle: Text('Entretenimiento y diversión'),
-              trailing: Icon(Icons.arrow_forward),
-              tileColor: const Color.fromARGB(255, 60, 60, 60),
-              iconColor: Colors.white,
-              textColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          ),
+          ...juegos.entries.map((game) {
+            return _tileGames(
+              game.key,
+              game.value,
+              Colors.black,
+              Colors.white,
+              Colors.amberAccent,
+            );
+          }),
 
           Divider(),
 
@@ -65,5 +57,28 @@ class Screen3 extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _tileGames(
+    String gameName,
+    String gameImage,
+    Color tileColor,
+    Color iconColor,
+    Color textColor,
+  ) {
+    final tile = ListTile(
+      leading: Image.asset(gameImage, width: 50, height: 50),
+      title: Text(gameName),
+      subtitle: Text('Entretenimiento y diversión'),
+      trailing: Icon(Icons.arrow_forward),
+      tileColor: tileColor,
+      iconColor: iconColor,
+      textColor: textColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    );
+
+    final espacio = SizedBox(height: 10);
+
+    return Column(children: [tile, espacio]);
   }
 }
