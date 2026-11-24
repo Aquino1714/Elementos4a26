@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarea/theme/app_theme.dart';
 
 import 'screens/screen1.dart';
 
@@ -13,7 +14,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false, // Quita la etiqueta de debug
 
       title: 'Proyecto 1', // Título de la aplicación

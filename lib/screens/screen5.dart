@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'screen6.dart';
+
 class Screen5 extends StatefulWidget {
-  const new({super.key});
+  const Screen5({super.key});
 
   @override
   State<Screen5> createState() => _Screen5State();
@@ -18,6 +20,30 @@ class _Screen5State extends State<Screen5> {
   bool _isChecked3 = false;
 
   @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  // -------- Enviar los datos guardadod a la pantalla 6-------------
+  void _guardar() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Screen6(
+          nombre: _textController.text,
+          meGustaFlutter: _switchValue,
+          nivelFlutter: _sliderValue,
+          preferenciaMovil: radioSelected,
+          usaEmulador: _isChecked1,
+          usaSmartphone: _isChecked2,
+          usaNavegador: _isChecked3,
+        ),
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Screen 5')),
@@ -32,7 +58,7 @@ class _Screen5State extends State<Screen5> {
           _entradaSlider(),
           _entradaRadio(),
           _entradasCheck(),
-          ElevatedButton(onPressed: null, child: Text('Save')),
+          ElevatedButton(onPressed: _guardar, child: Text('Save')),
         ],
       ),
     );

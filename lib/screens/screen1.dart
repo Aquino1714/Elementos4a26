@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tarea/screens/screen3.dart';
 import 'package:tarea/screens/screen4.dart';
 import 'package:tarea/screens/screen5.dart';
+import 'package:tarea/theme/app_theme.dart';
 
 import 'screen2.dart';
 
@@ -11,13 +12,7 @@ class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Pantalla 1',
-          style: TextStyle(color: Color.fromARGB(255, 182, 73, 209)),
-        ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      ),
+      appBar: AppBar(title: const Text('Pantalla 1')),
       body: Container(
         color: Color.fromARGB(255, 96, 96, 96),
         child: Center(
@@ -26,7 +21,7 @@ class Screen1 extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Seleccione una opcion:',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: AppTheme.lightTheme.textTheme.headlineLarge,
               ),
               SizedBox(height: 20),
               boton('Ejemplo de Rows', Colors.purple, context, Screen2()),
